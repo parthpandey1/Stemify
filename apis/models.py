@@ -7,5 +7,5 @@ class Track(models.Model):
 	artist = models.CharField(max_length=200)
 
 	def __str__(self):
-		return self.title
+		return f"{self.id}: {self.title} - {self.artist}"
 
