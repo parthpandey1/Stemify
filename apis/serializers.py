@@ -1,12 +1,15 @@
-# import serializer from rest_framework
 from rest_framework import serializers
+from .models import Track, Stem
 
-# import model from models.py
-from .models import Track
-
-# Create a model serializer
-class TrackSerializer(serializers.HyperlinkedModelSerializer):
-	# specify model and fields
+class StemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stem
+        fields = ('name', 'file')
+        
+class TrackSerializer(serializers.ModelSerializer):
+	stems = StemSerializer(many=True, read_only=True)
+	
 	class Meta:
 		model = Track
-		fields = ('title', 'artist')
+		fields = ('title', 'artist', 'audio_file', 'stems')
+            

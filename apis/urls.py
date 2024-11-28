@@ -15,5 +15,6 @@ router.register(r'stemify', TrackViewSet)
 # specify URL Path for rest_framework
 urlpatterns = [
 	path('', include(router.urls)),
-	path('api-auth/', include('rest_framework.urls'))
+	path('api-auth/', include('rest_framework.urls')),
+    path('addTrack/', AddTrackView.as_view(), name='add_track'),
 ]
